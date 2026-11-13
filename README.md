@@ -2,6 +2,10 @@
 
 A browser extension for Chrome and Safari that adds small features to GitHub.
 
+The pull request features work on both of GitHub's "Files changed" pages: the
+newer one at `/pull/N/changes` that signed-in users get, and the classic one
+at `/pull/N/files`.
+
 ## Features
 
 ### File filter
@@ -70,4 +74,9 @@ without full reloads and loads parts of a page late, so the host calls every
 feature's `apply` after each batch of DOM changes. `apply` must be idempotent,
 and it may write to the DOM only when a value differs.
 
-Keep GitHub selectors in `src/github/`, so a markup change has one place to fix.
+Features read the page through the `PullFilesPage` contract in
+[`src/github/page.ts`](src/github/page.ts). Its two implementations,
+`classic-page.ts` and `changes-page.ts`, hold every GitHub selector, so a
+markup change has one place to fix. The newer page's class names carry build
+hashes, so `changes-page.ts` relies on test ids, roles, ids and icon classes
+only.

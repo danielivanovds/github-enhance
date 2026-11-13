@@ -1,5 +1,6 @@
 import type { Feature } from "../../feature.ts";
-import { diffFiles, diffToggle, pullFilesRepo } from "../../github/pull-files.ts";
+import type { PullFilesPage } from "../../github/page.ts";
+import { pullFilesPage, pullFilesRepo } from "../../github/pull-files.ts";
 import { buttonGroup, toolbarButton, toolbarSlot } from "../../github/toolbar.ts";
 
 // Collapse or expand every diff on a pull request's "Files changed" tab at
@@ -8,22 +9,24 @@ import { buttonGroup, toolbarButton, toolbarSlot } from "../../github/toolbar.ts
 
 const SLOT_ID = "ghe-collapse-all";
 
-const setExpanded = (doc: Document, expanded: boolean) => {
-  for (const file of diffFiles(doc)) {
+const setExpanded = (doc: Document, page: PullFilesPage, expanded: boolean) => {
+  for (const file of page.diffFiles(doc)) {
     if (!file.element.checkVisibility()) continue;
-    const toggle = diffToggle(file.element);
-    if (toggle && toggle.getAttribute("aria-expanded") !== String(expanded)) toggle.click();
+    const toggle = page.diffToggle(file);
+    if (toggle && toggle.expanded !== expanded) toggle.button.click();
   }
 };
 
 const apply = (doc: Document) => {
   if (!pullFilesRepo(new URL(doc.location.href))) return;
-  const slot = toolbarSlot(doc, SLOT_ID, 2);
+  const page = pullFilesPage(doc);
+  if (!page) return;
+  const slot = toolbarSlot(doc, page, SLOT_ID, 2);
   if (!slot || slot.hasChildNodes()) return;
   slot.append(
     buttonGroup(doc, "Collapse or expand all files", [
-      toolbarButton(doc, "Collapse all", () => setExpanded(doc, false)),
-      toolbarButton(doc, "Expand all", () => setExpanded(doc, true)),
+      toolbarButton(doc, "Collapse all", () => setExpanded(doc, page, false)),
+      toolbarButton(doc, "Expand all", () => setExpanded(doc, page, true)),
     ]),
   );
 };

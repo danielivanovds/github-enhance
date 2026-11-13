@@ -1,5 +1,5 @@
 import type { Feature } from "../../feature.ts";
-import { diffFiles, pullFilesRepo, treeFilePath, treeFiles } from "../../github/pull-files.ts";
+import { pullFilesPage, pullFilesRepo, treeDirectorySelector } from "../../github/pull-files.ts";
 import { buttonGroup, toolbarButton, toolbarSlot } from "../../github/toolbar.ts";
 import { readSetting, writeSetting } from "../../storage.ts";
 import {
@@ -80,17 +80,13 @@ const hideAttr = (kind: FileKind) => `data-ghe-hide-${kind}`;
 //
 // A tree directory hides once none of its files would show: for every kind,
 // either that kind is hidden or the directory holds no file of it.
-const DIRECTORY = 'file-tree li[data-tree-entry-type="directory"]';
+const DIRECTORY = `:is(${treeDirectorySelector})`;
 const STYLE = `
 ${FILE_KINDS.map((kind) => `html[${hideAttr(kind)}] [${KIND_ATTR}="${kind}"]`).join(",\n")},
 html:is(${FILE_KINDS.map((kind) => `[${hideAttr(kind)}]`).join(", ")}) ${DIRECTORY}${FILE_KINDS.map(
   (kind) => `:is(html[${hideAttr(kind)}] *, :not(:has(li[${KIND_ATTR}="${kind}"])))`,
 ).join("")} {
   display: none !important;
-}
-#ghe-toolbar .btn[aria-pressed="true"] {
-  background-color: var(--button-default-bgColor-active, var(--color-btn-active-bg));
-  font-weight: 600;
 }
 `;
 
@@ -203,6 +199,8 @@ const createFileFilter = (): Feature => {
       for (const kind of FILE_KINDS) root.removeAttribute(hideAttr(kind));
       return;
     }
+    const page = pullFilesPage(doc);
+    if (!page) return;
 
     const settings = settingsByRepo.get(repo);
     if (!settings) {
@@ -222,7 +220,7 @@ const createFileFilter = (): Feature => {
     // far. File counts come from the tree, which lists every file even before
     // its diff loads.
     const lines = byKind<Lines>(() => ({ additions: 0, deletions: 0 }));
-    const diffs = diffFiles(doc);
+    const diffs = page.diffFiles(doc);
     for (const file of diffs) {
       const kind = classify(file.path);
       setAttr(file.element, KIND_ATTR, kind);
@@ -230,11 +228,11 @@ const createFileFilter = (): Feature => {
       lines[kind].deletions += file.deletions;
     }
     const counts = byKind(() => 0);
-    const tree = treeFiles(doc);
+    const tree = page.treeFiles(doc);
     for (const entry of tree) {
       // A tree entry's path never changes, so classify it once.
       const known = entry.getAttribute(KIND_ATTR);
-      const kind = isFileKind(known) ? known : classify(treeFilePath(entry));
+      const kind = isFileKind(known) ? known : classify(page.treeFilePath(entry));
       setAttr(entry, KIND_ATTR, kind);
       counts[kind] += 1;
     }
@@ -246,7 +244,7 @@ const createFileFilter = (): Feature => {
     const hidden = hiddenKinds(settings);
     for (const kind of FILE_KINDS) toggleAttr(root, hideAttr(kind), hidden.has(kind));
 
-    const slot = toolbarSlot(doc, SLOT_ID, 1);
+    const slot = toolbarSlot(doc, page, SLOT_ID, 1);
     if (!slot) return;
     if (!slot.hasChildNodes()) {
       fillControls(

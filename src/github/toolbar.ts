@@ -1,25 +1,50 @@
-import { reviewTools } from "./pull-files.ts";
+import type { PullFilesPage } from "./page.ts";
 
 const HOST_ID = "ghe-toolbar";
+
+// Keeps each button group on one line when GitHub's toolbar runs short of
+// width; the slots wrap as whole groups instead.
+const STYLE = `
+#${HOST_ID} { flex: 0 1 auto; min-width: 0; justify-content: flex-end; gap: 4px 0; }
+#${HOST_ID} > * { flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
+#${HOST_ID} .ghe-stats { white-space: nowrap; }
+#${HOST_ID} .BtnGroup { display: inline-flex; flex-wrap: nowrap; }
+#${HOST_ID} .btn { white-space: nowrap; }
+#${HOST_ID} .btn[aria-pressed="true"] {
+  background-color: var(--button-default-bgColor-active, var(--color-btn-active-bg));
+  font-weight: 600;
+}
+`;
+
+const ensureStyle = (doc: Document) => {
+  if (doc.getElementById(`${HOST_ID}-style`)) return;
+  const style = doc.createElement("style");
+  style.id = `${HOST_ID}-style`;
+  style.textContent = STYLE;
+  doc.head.append(style);
+};
 
 /**
  * A feature's own spot in the pull request diff toolbar, created on first use.
  * `order` sets its place among the other features' spots, whichever feature
  * runs first. Returns undefined until GitHub has rendered the toolbar.
  */
-export const toolbarSlot = (doc: Document, id: string, order: number): HTMLElement | undefined => {
+export const toolbarSlot = (
+  doc: Document,
+  page: PullFilesPage,
+  id: string,
+  order: number,
+): HTMLElement | undefined => {
   const existing = doc.getElementById(id);
   if (existing) return existing;
-
-  const tools = reviewTools(doc);
-  if (!tools) return undefined;
 
   let host = doc.getElementById(HOST_ID);
   if (!host) {
     host = doc.createElement("div");
     host.id = HOST_ID;
     host.className = "d-inline-flex flex-items-center flex-wrap";
-    tools.prepend(host);
+    if (!page.mountToolbar(doc, host)) return undefined;
+    ensureStyle(doc);
   }
 
   const slot = doc.createElement("div");
