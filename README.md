@@ -111,3 +111,7 @@ Features read the page through the `PullFilesPage` contract in
 markup change has one place to fix. The newer page's class names carry build
 hashes, so `changes-page.ts` relies on test ids, roles, ids and icon classes
 only.
+
+## License
+
+[MIT](LICENSE)

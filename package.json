@@ -2,6 +2,7 @@
   "name": "github-enhance",
   "version": "0.1.0",
   "description": "Browser extension that adds small quality-of-life features to GitHub",
+  "license": "MIT",
   "type": "module",
   "private": true,
   "scripts": {
