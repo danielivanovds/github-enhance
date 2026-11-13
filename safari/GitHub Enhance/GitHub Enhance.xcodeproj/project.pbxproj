@@ -7,38 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B43064230A73B09008E0102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43064130A73B09008E0102 /* AppDelegate.swift */; };
-		7B43064630A73B09008E0102 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 7B43064430A73B09008E0102 /* Main.html */; };
-		7B43064830A73B09008E0102 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B43064730A73B09008E0102 /* Icon.png */; };
-		7B43064A30A73B09008E0102 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 7B43064930A73B09008E0102 /* Style.css */; };
-		7B43064C30A73B09008E0102 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 7B43064B30A73B09008E0102 /* Script.js */; };
-		7B43064E30A73B09008E0102 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43064D30A73B09008E0102 /* ViewController.swift */; };
-		7B43065130A73B09008E0102 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B43064F30A73B09008E0102 /* Main.storyboard */; };
-		7B43065330A73B0B008E0102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B43065230A73B0B008E0102 /* Assets.xcassets */; };
-		7B43065A30A73B0C008E0102 /* GitHub Enhance Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7B43065930A73B0C008E0102 /* GitHub Enhance Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7B43065F30A73B0C008E0102 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43065E30A73B0C008E0102 /* SafariWebExtensionHandler.swift */; };
-		7B43066D30A73B0C008E0102 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B43066B30A73B0C008E0102 /* manifest.json */; };
-		7B43066E30A73B0C008E0102 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 7B43066C30A73B0C008E0102 /* content.js */; };
+		7B2F2E0630A742C200AA53C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2F2E0530A742C200AA53C1 /* AppDelegate.swift */; };
+		7B2F2E0A30A742C200AA53C1 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 7B2F2E0830A742C200AA53C1 /* Main.html */; };
+		7B2F2E0C30A742C200AA53C1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B2F2E0B30A742C200AA53C1 /* Icon.png */; };
+		7B2F2E0E30A742C200AA53C1 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 7B2F2E0D30A742C200AA53C1 /* Style.css */; };
+		7B2F2E1030A742C200AA53C1 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 7B2F2E0F30A742C200AA53C1 /* Script.js */; };
+		7B2F2E1230A742C200AA53C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2F2E1130A742C200AA53C1 /* ViewController.swift */; };
+		7B2F2E1530A742C200AA53C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2F2E1330A742C200AA53C1 /* Main.storyboard */; };
+		7B2F2E1730A742C400AA53C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B2F2E1630A742C400AA53C1 /* Assets.xcassets */; };
+		7B2F2E1E30A742C400AA53C1 /* GitHub Enhance Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7B2F2E1D30A742C400AA53C1 /* GitHub Enhance Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7B2F2E2330A742C400AA53C1 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2F2E2230A742C400AA53C1 /* SafariWebExtensionHandler.swift */; };
+		7B2F2E3230A742C400AA53C1 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 7B2F2E2F30A742C400AA53C1 /* icons */; };
+		7B2F2E3330A742C400AA53C1 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B2F2E3030A742C400AA53C1 /* manifest.json */; };
+		7B2F2E3430A742C400AA53C1 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 7B2F2E3130A742C400AA53C1 /* content.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7B43065B30A73B0C008E0102 /* PBXContainerItemProxy */ = {
+		7B2F2E1F30A742C400AA53C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7B43063630A73B09008E0102 /* Project object */;
+			containerPortal = 7B2F2DFA30A742C200AA53C1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7B43065830A73B0C008E0102;
+			remoteGlobalIDString = 7B2F2E1C30A742C400AA53C1;
 			remoteInfo = "GitHub Enhance Extension";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7B43066630A73B0C008E0102 /* Embed Foundation Extensions */ = {
+		7B2F2E2A30A742C400AA53C1 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				7B43065A30A73B0C008E0102 /* GitHub Enhance Extension.appex in Embed Foundation Extensions */,
+				7B2F2E1E30A742C400AA53C1 /* GitHub Enhance Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,32 +47,33 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7B43063E30A73B09008E0102 /* GitHub Enhance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub Enhance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B43064130A73B09008E0102 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7B43064530A73B09008E0102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
-		7B43064730A73B09008E0102 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		7B43064930A73B09008E0102 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
-		7B43064B30A73B09008E0102 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
-		7B43064D30A73B09008E0102 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7B43065030A73B09008E0102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7B43065230A73B0B008E0102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7B43065430A73B0B008E0102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7B43065930A73B0C008E0102 /* GitHub Enhance Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "GitHub Enhance Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B43065E30A73B0C008E0102 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
-		7B43066030A73B0C008E0102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7B43066B30A73B0C008E0102 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../../dist/manifest.json; sourceTree = "<group>"; };
-		7B43066C30A73B0C008E0102 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = ../../../dist/content.js; sourceTree = "<group>"; };
+		7B2F2E0230A742C200AA53C1 /* GitHub Enhance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub Enhance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B2F2E0530A742C200AA53C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7B2F2E0930A742C200AA53C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		7B2F2E0B30A742C200AA53C1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		7B2F2E0D30A742C200AA53C1 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		7B2F2E0F30A742C200AA53C1 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		7B2F2E1130A742C200AA53C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7B2F2E1430A742C200AA53C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7B2F2E1630A742C400AA53C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B2F2E1830A742C400AA53C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B2F2E1D30A742C400AA53C1 /* GitHub Enhance Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "GitHub Enhance Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B2F2E2230A742C400AA53C1 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		7B2F2E2430A742C400AA53C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B2F2E2F30A742C400AA53C1 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = ../../../dist/icons; sourceTree = "<group>"; };
+		7B2F2E3030A742C400AA53C1 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../../dist/manifest.json; sourceTree = "<group>"; };
+		7B2F2E3130A742C400AA53C1 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = ../../../dist/content.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7B43063B30A73B09008E0102 /* Frameworks */ = {
+		7B2F2DFF30A742C200AA53C1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7B43065630A73B0C008E0102 /* Frameworks */ = {
+		7B2F2E1A30A742C400AA53C1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -81,63 +83,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7B43063530A73B09008E0102 = {
+		7B2F2DF930A742C200AA53C1 = {
 			isa = PBXGroup;
 			children = (
-				7B43064030A73B09008E0102 /* GitHub Enhance */,
-				7B43065D30A73B0C008E0102 /* GitHub Enhance Extension */,
-				7B43063F30A73B09008E0102 /* Products */,
+				7B2F2E0430A742C200AA53C1 /* GitHub Enhance */,
+				7B2F2E2130A742C400AA53C1 /* GitHub Enhance Extension */,
+				7B2F2E0330A742C200AA53C1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		7B43063F30A73B09008E0102 /* Products */ = {
+		7B2F2E0330A742C200AA53C1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B43063E30A73B09008E0102 /* GitHub Enhance.app */,
-				7B43065930A73B0C008E0102 /* GitHub Enhance Extension.appex */,
+				7B2F2E0230A742C200AA53C1 /* GitHub Enhance.app */,
+				7B2F2E1D30A742C400AA53C1 /* GitHub Enhance Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7B43064030A73B09008E0102 /* GitHub Enhance */ = {
+		7B2F2E0430A742C200AA53C1 /* GitHub Enhance */ = {
 			isa = PBXGroup;
 			children = (
-				7B43064130A73B09008E0102 /* AppDelegate.swift */,
-				7B43064D30A73B09008E0102 /* ViewController.swift */,
-				7B43064F30A73B09008E0102 /* Main.storyboard */,
-				7B43065230A73B0B008E0102 /* Assets.xcassets */,
-				7B43065430A73B0B008E0102 /* Info.plist */,
-				7B43064330A73B09008E0102 /* Resources */,
+				7B2F2E0530A742C200AA53C1 /* AppDelegate.swift */,
+				7B2F2E1130A742C200AA53C1 /* ViewController.swift */,
+				7B2F2E1330A742C200AA53C1 /* Main.storyboard */,
+				7B2F2E1630A742C400AA53C1 /* Assets.xcassets */,
+				7B2F2E1830A742C400AA53C1 /* Info.plist */,
+				7B2F2E0730A742C200AA53C1 /* Resources */,
 			);
 			path = "GitHub Enhance";
 			sourceTree = "<group>";
 		};
-		7B43064330A73B09008E0102 /* Resources */ = {
+		7B2F2E0730A742C200AA53C1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7B43064430A73B09008E0102 /* Main.html */,
-				7B43064730A73B09008E0102 /* Icon.png */,
-				7B43064930A73B09008E0102 /* Style.css */,
-				7B43064B30A73B09008E0102 /* Script.js */,
+				7B2F2E0830A742C200AA53C1 /* Main.html */,
+				7B2F2E0B30A742C200AA53C1 /* Icon.png */,
+				7B2F2E0D30A742C200AA53C1 /* Style.css */,
+				7B2F2E0F30A742C200AA53C1 /* Script.js */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		7B43065D30A73B0C008E0102 /* GitHub Enhance Extension */ = {
+		7B2F2E2130A742C400AA53C1 /* GitHub Enhance Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7B43066A30A73B0C008E0102 /* Resources */,
-				7B43065E30A73B0C008E0102 /* SafariWebExtensionHandler.swift */,
-				7B43066030A73B0C008E0102 /* Info.plist */,
+				7B2F2E2E30A742C400AA53C1 /* Resources */,
+				7B2F2E2230A742C400AA53C1 /* SafariWebExtensionHandler.swift */,
+				7B2F2E2430A742C400AA53C1 /* Info.plist */,
 			);
 			path = "GitHub Enhance Extension";
 			sourceTree = "<group>";
 		};
-		7B43066A30A73B0C008E0102 /* Resources */ = {
+		7B2F2E2E30A742C400AA53C1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7B43066B30A73B0C008E0102 /* manifest.json */,
-				7B43066C30A73B0C008E0102 /* content.js */,
+				7B2F2E2F30A742C400AA53C1 /* icons */,
+				7B2F2E3030A742C400AA53C1 /* manifest.json */,
+				7B2F2E3130A742C400AA53C1 /* content.js */,
 			);
 			name = Resources;
 			path = "GitHub Enhance Extension";
@@ -146,34 +149,34 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7B43063D30A73B09008E0102 /* GitHub Enhance */ = {
+		7B2F2E0130A742C200AA53C1 /* GitHub Enhance */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B43066730A73B0C008E0102 /* Build configuration list for PBXNativeTarget "GitHub Enhance" */;
+			buildConfigurationList = 7B2F2E2B30A742C400AA53C1 /* Build configuration list for PBXNativeTarget "GitHub Enhance" */;
 			buildPhases = (
-				7B43063A30A73B09008E0102 /* Sources */,
-				7B43063B30A73B09008E0102 /* Frameworks */,
-				7B43063C30A73B09008E0102 /* Resources */,
-				7B43066630A73B0C008E0102 /* Embed Foundation Extensions */,
+				7B2F2DFE30A742C200AA53C1 /* Sources */,
+				7B2F2DFF30A742C200AA53C1 /* Frameworks */,
+				7B2F2E0030A742C200AA53C1 /* Resources */,
+				7B2F2E2A30A742C400AA53C1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7B43065C30A73B0C008E0102 /* PBXTargetDependency */,
+				7B2F2E2030A742C400AA53C1 /* PBXTargetDependency */,
 			);
 			name = "GitHub Enhance";
 			packageProductDependencies = (
 			);
 			productName = "GitHub Enhance";
-			productReference = 7B43063E30A73B09008E0102 /* GitHub Enhance.app */;
+			productReference = 7B2F2E0230A742C200AA53C1 /* GitHub Enhance.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7B43065830A73B0C008E0102 /* GitHub Enhance Extension */ = {
+		7B2F2E1C30A742C400AA53C1 /* GitHub Enhance Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B43066330A73B0C008E0102 /* Build configuration list for PBXNativeTarget "GitHub Enhance Extension" */;
+			buildConfigurationList = 7B2F2E2730A742C400AA53C1 /* Build configuration list for PBXNativeTarget "GitHub Enhance Extension" */;
 			buildPhases = (
-				7B43065530A73B0C008E0102 /* Sources */,
-				7B43065630A73B0C008E0102 /* Frameworks */,
-				7B43065730A73B0C008E0102 /* Resources */,
+				7B2F2E1930A742C400AA53C1 /* Sources */,
+				7B2F2E1A30A742C400AA53C1 /* Frameworks */,
+				7B2F2E1B30A742C400AA53C1 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -183,113 +186,114 @@
 			packageProductDependencies = (
 			);
 			productName = "GitHub Enhance Extension";
-			productReference = 7B43065930A73B0C008E0102 /* GitHub Enhance Extension.appex */;
+			productReference = 7B2F2E1D30A742C400AA53C1 /* GitHub Enhance Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7B43063630A73B09008E0102 /* Project object */ = {
+		7B2F2DFA30A742C200AA53C1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					7B43063D30A73B09008E0102 = {
+					7B2F2E0130A742C200AA53C1 = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
-					7B43065830A73B0C008E0102 = {
+					7B2F2E1C30A742C400AA53C1 = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
 			};
-			buildConfigurationList = 7B43063930A73B09008E0102 /* Build configuration list for PBXProject "GitHub Enhance" */;
+			buildConfigurationList = 7B2F2DFD30A742C200AA53C1 /* Build configuration list for PBXProject "GitHub Enhance" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 7B43063530A73B09008E0102;
+			mainGroup = 7B2F2DF930A742C200AA53C1;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 7B43063F30A73B09008E0102 /* Products */;
+			productRefGroup = 7B2F2E0330A742C200AA53C1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7B43063D30A73B09008E0102 /* GitHub Enhance */,
-				7B43065830A73B0C008E0102 /* GitHub Enhance Extension */,
+				7B2F2E0130A742C200AA53C1 /* GitHub Enhance */,
+				7B2F2E1C30A742C400AA53C1 /* GitHub Enhance Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7B43063C30A73B09008E0102 /* Resources */ = {
+		7B2F2E0030A742C200AA53C1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B43064830A73B09008E0102 /* Icon.png in Resources */,
-				7B43065130A73B09008E0102 /* Main.storyboard in Resources */,
-				7B43064C30A73B09008E0102 /* Script.js in Resources */,
-				7B43064630A73B09008E0102 /* Main.html in Resources */,
-				7B43065330A73B0B008E0102 /* Assets.xcassets in Resources */,
-				7B43064A30A73B09008E0102 /* Style.css in Resources */,
+				7B2F2E0C30A742C200AA53C1 /* Icon.png in Resources */,
+				7B2F2E1530A742C200AA53C1 /* Main.storyboard in Resources */,
+				7B2F2E1030A742C200AA53C1 /* Script.js in Resources */,
+				7B2F2E0A30A742C200AA53C1 /* Main.html in Resources */,
+				7B2F2E1730A742C400AA53C1 /* Assets.xcassets in Resources */,
+				7B2F2E0E30A742C200AA53C1 /* Style.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7B43065730A73B0C008E0102 /* Resources */ = {
+		7B2F2E1B30A742C400AA53C1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B43066E30A73B0C008E0102 /* content.js in Resources */,
-				7B43066D30A73B0C008E0102 /* manifest.json in Resources */,
+				7B2F2E3430A742C400AA53C1 /* content.js in Resources */,
+				7B2F2E3330A742C400AA53C1 /* manifest.json in Resources */,
+				7B2F2E3230A742C400AA53C1 /* icons in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7B43063A30A73B09008E0102 /* Sources */ = {
+		7B2F2DFE30A742C200AA53C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B43064E30A73B09008E0102 /* ViewController.swift in Sources */,
-				7B43064230A73B09008E0102 /* AppDelegate.swift in Sources */,
+				7B2F2E1230A742C200AA53C1 /* ViewController.swift in Sources */,
+				7B2F2E0630A742C200AA53C1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7B43065530A73B0C008E0102 /* Sources */ = {
+		7B2F2E1930A742C400AA53C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B43065F30A73B0C008E0102 /* SafariWebExtensionHandler.swift in Sources */,
+				7B2F2E2330A742C400AA53C1 /* SafariWebExtensionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7B43065C30A73B0C008E0102 /* PBXTargetDependency */ = {
+		7B2F2E2030A742C400AA53C1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7B43065830A73B0C008E0102 /* GitHub Enhance Extension */;
-			targetProxy = 7B43065B30A73B0C008E0102 /* PBXContainerItemProxy */;
+			target = 7B2F2E1C30A742C400AA53C1 /* GitHub Enhance Extension */;
+			targetProxy = 7B2F2E1F30A742C400AA53C1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7B43064430A73B09008E0102 /* Main.html */ = {
+		7B2F2E0830A742C200AA53C1 /* Main.html */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7B43064530A73B09008E0102 /* Base */,
+				7B2F2E0930A742C200AA53C1 /* Base */,
 			);
 			name = Main.html;
 			sourceTree = "<group>";
 		};
-		7B43064F30A73B09008E0102 /* Main.storyboard */ = {
+		7B2F2E1330A742C200AA53C1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7B43065030A73B09008E0102 /* Base */,
+				7B2F2E1430A742C200AA53C1 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -297,7 +301,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		7B43066130A73B0C008E0102 /* Debug */ = {
+		7B2F2E2530A742C400AA53C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -360,7 +364,7 @@
 			};
 			name = Debug;
 		};
-		7B43066230A73B0C008E0102 /* Release */ = {
+		7B2F2E2630A742C400AA53C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -415,7 +419,7 @@
 			};
 			name = Release;
 		};
-		7B43066430A73B0C008E0102 /* Debug */ = {
+		7B2F2E2830A742C400AA53C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -438,7 +442,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.githubenhance.GitHubEnhance.Extension;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.githubenhance.GitHub-Enhance.Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -449,7 +453,7 @@
 			};
 			name = Debug;
 		};
-		7B43066530A73B0C008E0102 /* Release */ = {
+		7B2F2E2930A742C400AA53C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -472,7 +476,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.githubenhance.GitHubEnhance.Extension;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.githubenhance.GitHub-Enhance.Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -483,7 +487,7 @@
 			};
 			name = Release;
 		};
-		7B43066830A73B0C008E0102 /* Debug */ = {
+		7B2F2E2C30A742C400AA53C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -512,7 +516,7 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.githubenhance.GitHubEnhance;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.githubenhance.GitHub-Enhance";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -524,7 +528,7 @@
 			};
 			name = Debug;
 		};
-		7B43066930A73B0C008E0102 /* Release */ = {
+		7B2F2E2D30A742C400AA53C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -553,7 +557,7 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.githubenhance.GitHubEnhance;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.githubenhance.GitHub-Enhance";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -568,34 +572,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7B43063930A73B09008E0102 /* Build configuration list for PBXProject "GitHub Enhance" */ = {
+		7B2F2DFD30A742C200AA53C1 /* Build configuration list for PBXProject "GitHub Enhance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7B43066130A73B0C008E0102 /* Debug */,
-				7B43066230A73B0C008E0102 /* Release */,
+				7B2F2E2530A742C400AA53C1 /* Debug */,
+				7B2F2E2630A742C400AA53C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B43066330A73B0C008E0102 /* Build configuration list for PBXNativeTarget "GitHub Enhance Extension" */ = {
+		7B2F2E2730A742C400AA53C1 /* Build configuration list for PBXNativeTarget "GitHub Enhance Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7B43066430A73B0C008E0102 /* Debug */,
-				7B43066530A73B0C008E0102 /* Release */,
+				7B2F2E2830A742C400AA53C1 /* Debug */,
+				7B2F2E2930A742C400AA53C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B43066730A73B0C008E0102 /* Build configuration list for PBXNativeTarget "GitHub Enhance" */ = {
+		7B2F2E2B30A742C400AA53C1 /* Build configuration list for PBXNativeTarget "GitHub Enhance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7B43066830A73B0C008E0102 /* Debug */,
-				7B43066930A73B0C008E0102 /* Release */,
+				7B2F2E2C30A742C400AA53C1 /* Debug */,
+				7B2F2E2D30A742C400AA53C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 7B43063630A73B09008E0102 /* Project object */;
+	rootObject = 7B2F2DFA30A742C200AA53C1 /* Project object */;
 }

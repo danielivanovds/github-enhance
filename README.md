@@ -97,6 +97,23 @@ To update: `git pull`, `bun run safari`, then reload the GitHub tab.
 bun run check   # lint, typecheck, test, build
 ```
 
+The icon's source is [`icons/icon.svg`](icons/icon.svg). After changing it,
+run `bun run icons` to render the extension's PNGs and the Safari app's icon
+set, and commit the output. It needs `rsvg-convert` (`brew install librsvg`).
+
+`safari/` is the project Apple's converter generates. If it ever needs
+regenerating (say, to pick up a new file type in `dist/`), run the converter
+with the same bundle id, then `bun run icons` to replace the app icons it
+writes:
+
+```bash
+bun run build
+xcrun safari-web-extension-converter dist --project-location safari \
+  --app-name "GitHub Enhance" --bundle-identifier dev.githubenhance.GitHub-Enhance \
+  --swift --macos-only --no-open --no-prompt --force
+bun run icons
+```
+
 ## Add a feature
 
 Each feature implements `Feature` from [`src/feature.ts`](src/feature.ts) and

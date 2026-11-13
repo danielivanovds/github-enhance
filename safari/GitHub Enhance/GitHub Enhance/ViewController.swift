@@ -9,7 +9,7 @@ import Cocoa
 import SafariServices
 import WebKit
 
-let extensionBundleIdentifier = "dev.githubenhance.GitHubEnhance.Extension"
+let extensionBundleIdentifier = "dev.githubenhance.GitHub-Enhance.Extension"
 
 class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHandler {
 

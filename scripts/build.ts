@@ -21,5 +21,9 @@ if (!result.success) {
 }
 
 await cp("manifest.json", `${outdir}/manifest.json`);
+await cp("icons", `${outdir}/icons`, {
+  recursive: true,
+  filter: (path) => !path.endsWith(".svg"),
+});
 
 console.log(`Built ${result.outputs.length} file(s) into ${outdir}/`);

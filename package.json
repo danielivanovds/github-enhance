@@ -8,6 +8,7 @@
   "scripts": {
     "build": "bun run scripts/build.ts",
     "safari": "bun run scripts/safari.ts",
+    "icons": "bun run scripts/icons.ts",
     "test": "bun test",
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
