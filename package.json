@@ -1,0 +1,24 @@
+{
+  "name": "github-enhance",
+  "version": "0.1.0",
+  "description": "Browser extension that adds small quality-of-life features to GitHub",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bun run scripts/build.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "check": "biome check . && tsc --noEmit && bun test && bun run build"
+  },
+  "dependencies": {
+    "picomatch": "^4.0.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.7",
+    "@types/bun": "latest",
+    "@types/chrome": "^0.3.7",
+    "@types/picomatch": "^4.0.3",
+    "typescript": "^7.0.2"
+  }
+}
