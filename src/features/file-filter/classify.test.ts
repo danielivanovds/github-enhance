@@ -1,9 +1,12 @@
 import { describe, expect, test } from "bun:test";
-import { DEFAULT_TEST_PATTERNS, makeClassifier } from "./classify.ts";
+import { DEFAULT_GENERATED_PATTERNS, DEFAULT_TEST_PATTERNS, makeClassifier } from "./classify.ts";
 
-const classify = makeClassifier(DEFAULT_TEST_PATTERNS);
+const classify = makeClassifier({
+  generated: DEFAULT_GENERATED_PATTERNS,
+  test: DEFAULT_TEST_PATTERNS,
+});
 
-describe("default test patterns", () => {
+describe("default patterns", () => {
   test.each([
     "src/foo.test.ts",
     "packages/a/src/bar.spec.tsx",
@@ -26,6 +29,28 @@ describe("default test patterns", () => {
   });
 
   test.each([
+    "package-lock.json",
+    "bun.lock",
+    "apps/web/pnpm-lock.yaml",
+    "Cargo.lock",
+    "go.sum",
+    "ios/Podfile.lock",
+    "packages/ui/dist/index.js",
+    "public/vendor.min.js",
+    "public/app.js.map",
+    "src/__generated__/schema.graphql.ts",
+    "src/ir/generated/opcodes.rs",
+    "api/user.pb.go",
+    "api/user_pb2_grpc.py",
+    "lib/models/user.g.dart",
+    "src/routes.gen.ts",
+    // Generated wins over test.
+    "test/cli/install/migration/yarn-berry/basic/yarn.lock",
+  ])("treats %s as generated", (path) => {
+    expect(classify(path)).toBe("generated");
+  });
+
+  test.each([
     "src/foo.ts",
     "src/testing-library-adapter.ts",
     "docs/testing.md",
@@ -34,6 +59,9 @@ describe("default test patterns", () => {
     "pkg/server/handler.go",
     "src/aot/compile/program_reach.rs",
     "src/main/java/com/acme/Testimonial.java",
+    "src/install/lockfile.rs",
+    "src/generator.ts",
+    "scripts/build/deps/webkit.ts",
     "README.md",
   ])("treats %s as code", (path) => {
     expect(classify(path)).toBe("code");

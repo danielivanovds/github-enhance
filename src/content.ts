@@ -1,7 +1,8 @@
 import type { Feature } from "./feature.ts";
-import { testFilter } from "./features/test-filter/index.ts";
+import { collapseAll } from "./features/collapse-all/index.ts";
+import { fileFilter } from "./features/file-filter/index.ts";
 
-const features: readonly Feature[] = [testFilter];
+const features: readonly Feature[] = [fileFilter, collapseAll];
 
 const applyAll = () => {
   for (const feature of features) {

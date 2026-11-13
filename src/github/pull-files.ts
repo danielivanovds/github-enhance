@@ -42,6 +42,14 @@ export const diffFiles = (doc: Document): DiffFile[] =>
     };
   });
 
+/**
+ * The chevron in a diff's header that folds the diff away. Its aria-expanded
+ * tells whether the diff is open. Clicking it, rather than toggling classes,
+ * keeps GitHub's own state in step.
+ */
+export const diffToggle = (file: Element): HTMLElement | null =>
+  file.querySelector<HTMLElement>(".file-header .js-details-target[aria-expanded]");
+
 // #endregion
 
 // #region File tree
