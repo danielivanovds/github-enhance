@@ -58,26 +58,37 @@ export const DEFAULT_TEST_PATTERNS: readonly string[] = [
   "**/*{Test,Tests,Spec,IT}.{java,kt,kts,scala,swift,cs}",
 ];
 
+/** Path globs for prose documentation: Markdown and MDX. */
+export const DEFAULT_DOCS_PATTERNS: readonly string[] = ["**/*.{md,mdx}"];
+
 // #endregion
 
 // #region Classifier
 
-export const FILE_KINDS = ["code", "test", "generated"] as const;
+export const FILE_KINDS = ["code", "test", "docs", "generated"] as const;
 export type FileKind = (typeof FILE_KINDS)[number];
 
 export interface Patterns {
   readonly generated: readonly string[];
   readonly test: readonly string[];
+  readonly docs: readonly string[];
 }
 
 /**
- * Builds a path classifier. Generated wins over test, so a lock file inside a
- * test fixture folder counts as generated.
+ * Builds a path classifier. The first match wins, in the order generated,
+ * test, docs: a lock file in a test fixture folder counts as generated, and a
+ * Markdown fixture counts as a test.
  */
 export const makeClassifier = (patterns: Patterns): ((path: string) => FileKind) => {
   const isGenerated = picomatch([...patterns.generated], { dot: true });
   const isTest = picomatch([...patterns.test], { dot: true });
-  return (path) => (isGenerated(path) ? "generated" : isTest(path) ? "test" : "code");
+  const isDocs = picomatch([...patterns.docs], { dot: true });
+  return (path) => {
+    if (isGenerated(path)) return "generated";
+    if (isTest(path)) return "test";
+    if (isDocs(path)) return "docs";
+    return "code";
+  };
 };
 
 // #endregion

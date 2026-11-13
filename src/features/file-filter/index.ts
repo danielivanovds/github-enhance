@@ -3,6 +3,7 @@ import { diffFiles, pullFilesRepo, treeFilePath, treeFiles } from "../../github/
 import { buttonGroup, toolbarButton, toolbarSlot } from "../../github/toolbar.ts";
 import { readSetting, writeSetting } from "../../storage.ts";
 import {
+  DEFAULT_DOCS_PATTERNS,
   DEFAULT_GENERATED_PATTERNS,
   DEFAULT_TEST_PATTERNS,
   FILE_KINDS,
@@ -11,8 +12,8 @@ import {
 } from "./classify.ts";
 
 // Pull request "Files changed" filter. Test files: show all, hide them, or show
-// only them. Generated files: show or hide. Both choices are remembered per
-// repository.
+// only them. Docs and generated files: show or hide each. The choices are
+// remembered per repository.
 
 // #region Settings
 
@@ -25,12 +26,16 @@ const TEST_MODE_LABELS: Record<TestMode, string> = {
   "only-tests": "Tests only",
 };
 
+/** Kinds that get their own on/off "Hide" button. */
+const TOGGLE_KINDS = ["docs", "generated"] as const;
+type ToggleKind = (typeof TOGGLE_KINDS)[number];
+
 interface Settings {
   readonly tests: TestMode;
-  readonly hideGenerated: boolean;
+  readonly hide: Readonly<Record<ToggleKind, boolean>>;
 }
 
-const DEFAULT_SETTINGS: Settings = { tests: "all", hideGenerated: false };
+const DEFAULT_SETTINGS: Settings = { tests: "all", hide: { docs: false, generated: false } };
 
 const isTestMode = (value: unknown): value is TestMode => TEST_MODES.some((mode) => mode === value);
 
@@ -39,24 +44,26 @@ const isTestMode = (value: unknown): value is TestMode => TEST_MODES.some((mode)
 const decodeSettings = (stored: unknown): Settings => {
   if (typeof stored !== "object" || stored === null) return DEFAULT_SETTINGS;
   const tests = "tests" in stored ? stored.tests : undefined;
-  const hideGenerated = "hideGenerated" in stored ? stored.hideGenerated : undefined;
+  const hide = "hide" in stored && typeof stored.hide === "object" ? stored.hide : null;
+  const docs = hide !== null && "docs" in hide ? hide.docs : undefined;
+  const generated = hide !== null && "generated" in hide ? hide.generated : undefined;
   return {
     tests: isTestMode(tests) ? tests : DEFAULT_SETTINGS.tests,
-    hideGenerated:
-      typeof hideGenerated === "boolean" ? hideGenerated : DEFAULT_SETTINGS.hideGenerated,
+    hide: {
+      docs: typeof docs === "boolean" ? docs : DEFAULT_SETTINGS.hide.docs,
+      generated: typeof generated === "boolean" ? generated : DEFAULT_SETTINGS.hide.generated,
+    },
   };
 };
 
 const storageKey = (repo: string) => `file-filter:${repo}`;
 
 const hiddenKinds = (settings: Settings): ReadonlySet<FileKind> => {
-  const hidden = new Set<FileKind>();
+  const hidden = new Set<FileKind>(TOGGLE_KINDS.filter((kind) => settings.hide[kind]));
   if (settings.tests === "hide-tests") hidden.add("test");
   if (settings.tests === "only-tests") {
-    hidden.add("code");
-    hidden.add("generated");
+    for (const kind of FILE_KINDS) if (kind !== "test") hidden.add(kind);
   }
-  if (settings.hideGenerated) hidden.add("generated");
   return hidden;
 };
 
@@ -111,7 +118,7 @@ const fillControls = (
   doc: Document,
   slot: HTMLElement,
   onTests: (mode: TestMode) => void,
-  onGenerated: () => void,
+  onToggle: (kind: ToggleKind) => void,
 ) => {
   const stats = doc.createElement("span");
   stats.className = "ghe-stats text-small color-fg-muted mr-2 hide-sm";
@@ -122,11 +129,20 @@ const fillControls = (
     return button;
   });
 
-  const generated = toolbarButton(doc, "Hide generated", onGenerated);
-  generated.classList.add("ml-2");
-  generated.dataset.generated = "";
+  const toggles = TOGGLE_KINDS.map((kind) => {
+    const button = toolbarButton(doc, `Hide ${KIND_LABELS[kind].toLowerCase()}`, () =>
+      onToggle(kind),
+    );
+    button.dataset.hideKind = kind;
+    return button;
+  });
 
-  slot.append(stats, buttonGroup(doc, "Filter test files", testButtons), generated);
+  slot.append(
+    stats,
+    buttonGroup(doc, "Filter test files", testButtons),
+    buttonGroup(doc, "Hide kinds of files", toggles),
+  );
+  slot.lastElementChild?.classList.add("ml-2");
 };
 
 // #endregion
@@ -141,11 +157,19 @@ interface Lines {
 const KIND_LABELS: Record<FileKind, string> = {
   code: "Code",
   test: "Tests",
+  docs: "Docs",
   generated: "Generated",
 };
 
 const formatTotals = (kind: FileKind, files: number, lines: Lines) =>
   `${KIND_LABELS[kind]} ${files.toLocaleString()} · +${lines.additions.toLocaleString()} −${lines.deletions.toLocaleString()}`;
+
+const byKind = <T>(make: () => T): Record<FileKind, T> => ({
+  code: make(),
+  test: make(),
+  docs: make(),
+  generated: make(),
+});
 
 // #endregion
 
@@ -154,6 +178,7 @@ const formatTotals = (kind: FileKind, files: number, lines: Lines) =>
 const classify = makeClassifier({
   generated: DEFAULT_GENERATED_PATTERNS,
   test: DEFAULT_TEST_PATTERNS,
+  docs: DEFAULT_DOCS_PATTERNS,
 });
 
 const isFileKind = (value: string | null): value is FileKind =>
@@ -163,8 +188,9 @@ const createFileFilter = (): Feature => {
   const settingsByRepo = new Map<string, Settings>();
   const loading = new Set<string>();
 
-  const update = (doc: Document, repo: string, change: Partial<Settings>) => {
-    const next = { ...(settingsByRepo.get(repo) ?? DEFAULT_SETTINGS), ...change };
+  const current = (repo: string) => settingsByRepo.get(repo) ?? DEFAULT_SETTINGS;
+
+  const update = (doc: Document, repo: string, next: Settings) => {
     settingsByRepo.set(repo, next);
     void writeSetting(storageKey(repo), next);
     apply(doc);
@@ -192,14 +218,10 @@ const createFileFilter = (): Feature => {
     }
 
     // Classify before hiding anything, so no directory hides for lack of
-    // classified files.
-    // Line counts come from the diffs GitHub has rendered so far. File counts
-    // come from the tree, which lists every file even before its diff loads.
-    const lines: Record<FileKind, Lines> = {
-      code: { additions: 0, deletions: 0 },
-      test: { additions: 0, deletions: 0 },
-      generated: { additions: 0, deletions: 0 },
-    };
+    // classified files. Line counts come from the diffs GitHub has rendered so
+    // far. File counts come from the tree, which lists every file even before
+    // its diff loads.
+    const lines = byKind<Lines>(() => ({ additions: 0, deletions: 0 }));
     const diffs = diffFiles(doc);
     for (const file of diffs) {
       const kind = classify(file.path);
@@ -207,7 +229,7 @@ const createFileFilter = (): Feature => {
       lines[kind].additions += file.additions;
       lines[kind].deletions += file.deletions;
     }
-    const counts: Record<FileKind, number> = { code: 0, test: 0, generated: 0 };
+    const counts = byKind(() => 0);
     const tree = treeFiles(doc);
     for (const entry of tree) {
       // A tree entry's path never changes, so classify it once.
@@ -230,20 +252,20 @@ const createFileFilter = (): Feature => {
       fillControls(
         doc,
         slot,
-        (tests) => update(doc, repo, { tests }),
-        () =>
-          update(doc, repo, {
-            hideGenerated: !(settingsByRepo.get(repo) ?? DEFAULT_SETTINGS).hideGenerated,
-          }),
+        (tests) => update(doc, repo, { ...current(repo), tests }),
+        (kind) => {
+          const now = current(repo);
+          update(doc, repo, { ...now, hide: { ...now.hide, [kind]: !now.hide[kind] } });
+        },
       );
     }
 
-    const totalFiles = counts.code + counts.test + counts.generated;
+    const totalFiles = FILE_KINDS.reduce((sum, kind) => sum + counts[kind], 0);
     const partial =
       diffs.length < totalFiles
         ? ` (lines from ${diffs.length.toLocaleString()} of ${totalFiles.toLocaleString()} files loaded)`
         : "";
-    const shown = FILE_KINDS.filter((kind) => kind !== "generated" || counts.generated > 0);
+    const shown = FILE_KINDS.filter((kind) => kind === "code" || counts[kind] > 0);
     const stats = slot.querySelector(".ghe-stats");
     if (stats) {
       setText(
@@ -254,8 +276,10 @@ const createFileFilter = (): Feature => {
     for (const button of slot.querySelectorAll<HTMLElement>("[data-test-mode]")) {
       setAttr(button, "aria-pressed", String(button.dataset.testMode === settings.tests));
     }
-    const generated = slot.querySelector("[data-generated]");
-    if (generated) setAttr(generated, "aria-pressed", String(settings.hideGenerated));
+    for (const button of slot.querySelectorAll<HTMLElement>("[data-hide-kind]")) {
+      const kind = TOGGLE_KINDS.find((k) => k === button.dataset.hideKind);
+      if (kind) setAttr(button, "aria-pressed", String(settings.hide[kind]));
+    }
   };
 
   return { id: "file-filter", apply };

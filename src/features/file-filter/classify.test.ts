@@ -1,9 +1,15 @@
 import { describe, expect, test } from "bun:test";
-import { DEFAULT_GENERATED_PATTERNS, DEFAULT_TEST_PATTERNS, makeClassifier } from "./classify.ts";
+import {
+  DEFAULT_DOCS_PATTERNS,
+  DEFAULT_GENERATED_PATTERNS,
+  DEFAULT_TEST_PATTERNS,
+  makeClassifier,
+} from "./classify.ts";
 
 const classify = makeClassifier({
   generated: DEFAULT_GENERATED_PATTERNS,
   test: DEFAULT_TEST_PATTERNS,
+  docs: DEFAULT_DOCS_PATTERNS,
 });
 
 describe("default patterns", () => {
@@ -50,10 +56,24 @@ describe("default patterns", () => {
     expect(classify(path)).toBe("generated");
   });
 
+  test.each(["README.md", "docs/testing.md", "docs/compiler/aot.mdx", "packages/ui/CHANGELOG.md"])(
+    "treats %s as docs",
+    (path) => {
+      expect(classify(path)).toBe("docs");
+    },
+  );
+
+  test.each(["test/fixtures/sample.md", "src/__snapshots__/readme.mdx"])(
+    "treats Markdown test material %s as a test",
+    (path) => {
+      expect(classify(path)).toBe("test");
+    },
+  );
+
   test.each([
     "src/foo.ts",
     "src/testing-library-adapter.ts",
-    "docs/testing.md",
+    "docs/config.json",
     "src/contest.ts",
     "src/latest.ts",
     "pkg/server/handler.go",
@@ -62,7 +82,6 @@ describe("default patterns", () => {
     "src/install/lockfile.rs",
     "src/generator.ts",
     "scripts/build/deps/webkit.ts",
-    "README.md",
   ])("treats %s as code", (path) => {
     expect(classify(path)).toBe("code");
   });
